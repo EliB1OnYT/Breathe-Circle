@@ -1,16 +1,52 @@
 {
-  "short_name": "Breathe",
+  "dir": "ltr",
+  "lang": "en",
   "name": "Breathe Circle",
-  "icons": [
-    {
-      "src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==",
-      "sizes": "144x144",
-      "type": "image/png"
-    }
-  ],
-  "start_url": "index.html",
+  "short_name": "Breathe",
+  "description": "A calm breathing coach that follows your rhythm—installs like a native app.",
+  "scope": "/",
+  "start_url": "/index.html",
   "display": "standalone",
   "orientation": "portrait",
+  "theme_color": "#0d0d2b",
   "background_color": "#0d0d2b",
-  "theme_color": "#0d0d2b"
+
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+
+  "screenshots": [
+    {
+      "src": "ss-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "ss-narrow.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
+
+  "categories": ["health", "meditation", "lifestyle"],
+  "shortcuts": [
+    {
+      "name": "Start breathing",
+      "url": "/index.html?start",
+      "description": "Launch straight into the breathing session"
+    }
+  ]
 }
