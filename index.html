@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Breathe Circle</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <link rel="manifest" href="manifest.json">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%;background:#0d0d2b;color:#fff;font-family:system-ui,Segoe UI,Roboto,sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}
+    #circle{width:40vmin;height:40vmin;background:radial-gradient(circle at center,#6fa8dc 0,#0d0d2b 70%);border-radius:50%;transition:transform .8s ease-out}
+    #text{margin-top:10vh;font-size:6vmin;text-align:center;letter-spacing:.05em}
+    button{padding:3vmin 6vmin;font-size:4vmin;border:none;border-radius:2vmin;background:#6fa8dc;color:#fff}
+    audio{display:none}   /* invisible */
+  </style>
+</head>
+<body>
+  <div id="circle"></div>
+  <div id="text">Tap Start and allow microphone</div>
+  <button id="startBtn">Start</button>
+
+  <!-- Royalty-free YouTube Audio Library stream -->
+  <audio id="bg" loop crossorigin="anonymous">
+    <source src="https://youtu.be/_DYAnU3H7RI?si=EzSh32mOuZ-X087O" type="audio/mpeg">
+    <!-- fallback: another free lo-fi stream -->
+    <source src="https://cdn.pixabay.com/download/audio/2022/02/21/audio_2c01c8a46c.mp3?filename=lofi-chill-80bpm-17224.mp3" type="audio/mpeg">
+    Your browser does not support the audio tag.
+  </audio>
+
+<script>
+const circle   = document.getElementById('circle');
+const text     = document.getElementById('text');
+const startBtn = document.getElementById('startBtn');
+const bgMusic  = document.getElementById('bg');
+
+async function start() {
+  startBtn.style.display = 'none';
+  text.textContent = 'Listening…';
+
+  // mic permission (then ignore)
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({audio:true});
+    stream.getTracks().forEach(t => t.stop());
+  } catch(e) {/* ignore deny */}
+
+  // start ambient music
+  bgMusic.volume = 0.25;
+  bgMusic.play().catch(() => {}); // swallow autoplay block if any
+
+  // breathing loop
+  let inhale = true;
+  setInterval(() => {
+    if (inhale) {
+      text.textContent = 'Breathe in…';
+      circle.style.transform = 'scale(1.5)';
+    } else {
+      text.textContent = 'Breathe out…';
+      circle.style.transform = 'scale(0.6)';
+    }
+    inhale = !inhale;
+  }, 4000);
+}
+
+startBtn.addEventListener('click', start);
+</script>
+</body>
+</html>
