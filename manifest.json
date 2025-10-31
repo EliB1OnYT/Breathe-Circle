@@ -1,11 +1,13 @@
 {
   "short_name": "Breathe",
   "name": "Breathe Circle",
-  "icons": [{
-    "src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==",
-    "sizes": "144x144",
-    "type": "image/png"
-  }],
+  "icons": [
+    {
+      "src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==",
+      "sizes": "144x144",
+      "type": "image/png"
+    }
+  ],
   "start_url": "index.html",
   "display": "standalone",
   "orientation": "portrait",
